@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Cutting Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme" id="appBody">
+    <div class="app-container">
+        
+        <div id="screenInput" class="screen">
+            <div class="app-header">
+                <h2>Cutting Master</h2>
+                <button class="icon-btn" id="toSettingsBtn">⚙️ Settings</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Stock Bars</h3>
+                    <button id="addStockBtn" class="btn-small">+ Add</button>
+                </div>
+                <div id="stockContainer"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Required Bars</h3>
+                    <button id="addRequiredBtn" class="btn-small">+ Add</button>
+                </div>
+                <div id="requiredContainer"></div>
+            </div>
+
+            <button id="calculateBtn" class="btn-primary">Calculate</button>
+        </div>
+
+        <div id="screenSettings" class="screen hidden">
+            <div class="app-header">
+                <button class="ios-back-btn" id="backFromSettingsBtn">‹ Back</button>
+                <h2>Settings</h2>
+                <div style="width: 50px;"></div>
+            </div>
+
+            <div class="card">
+                <div class="setting-group">
+                    <label>Theme</label>
+                    <select id="settingTheme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Unit</label>
+                    <select id="settingUnit">
+                        <option value="ft-in">Fractional Feet & Inches</option>
+                        <option value="mm">Millimeters (mm)</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>Kerf / Blade Thickness</label>
+                    <input type="text" id="settingKerf" class="state-bound-input" data-field="kerf">
+                </div>
+                <div class="setting-group">
+                    <label>Default Bar Length</label>
+                    <input type="text" id="settingBarLength" class="state-bound-input" data-field="barLength">
+                </div>
+                <div class="setting-group">
+                    <label>Glass Dimensions</label>
+                    <div class="glass-split-inputs">
+                        <input type="text" id="settingGlassWidth" class="state-bound-input" data-field="glassWidth" placeholder="Width">
+                        <span class="x-separator">×</span>
+                        <input type="text" id="settingGlassHeight" class="state-bound-input" data-field="glassHeight" placeholder="Height">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="screenResult" class="screen hidden">
+            <div class="app-header">
+                <button class="ios-back-btn" id="backFromResultBtn">‹ Back</button>
+                <div class="sub-nav-tabs">
+                    <button class="sub-tab-btn active" id="subTabResultBtn">Layout Map</button>
+                    <button class="sub-tab-btn" id="subTabConfigBtn">Configuration</button>
+                </div>
+                <button id="editConfigBtn" class="btn-small btn-edit">Edit</button>
+            </div>
+
+            <div id="subScreenResult">
+                <div class="card" id="summaryView"></div>
+                
+                <div class="card zoom-card">
+                    <div class="zoom-header">
+                        <h3>Cutting Layout Map</h3>
+                        <div class="zoom-controls">
+                            <button id="zoomOutBtn" class="btn-zoom">➖</button>
+                            <button id="zoomInBtn" class="btn-zoom">➕</button>
+                            <button id="resetZoomBtn" class="btn-reset-map">🔄 Reset</button>
+                        </div>
+                    </div>
+                    
+                    <div class="zoom-viewport">
+                        <div id="visualLayout" class="zoom-content"></div>
+                    </div>
+
+                    <div class="dpad-container">
+                        <div class="dpad-row"><button id="moveUpBtn" class="btn-dpad">▲</button></div>
+                        <div class="dpad-row">
+                            <button id="moveLeftBtn" class="btn-dpad">◀</button>
+                            <span class="dpad-center">Move</span>
+                            <button id="moveRightBtn" class="btn-dpad">▶</button>
+                        </div>
+                        <div class="dpad-row"><button id="moveDownBtn" class="btn-dpad">▼</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="subScreenConfig" class="hidden">
+                <div class="card">
+                    <h3>Your Input Configuration</h3>
+                    <div id="readOnlyConfigView"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
