@@ -199,7 +199,7 @@ function renderAllInputRows() {
     state.stocks.forEach((item, index) => {
         const row = document.createElement('div'); row.className = 'input-row';
         row.innerHTML = `
-            <input type="text" class="stock-len-input" value="${formatFromInches(item.length, u)}" placeholder="Size">
+            <input type="text" class="stock-len-input" value="${formatFromInches(item.length, u).replace(/"/g, '&quot;')}" placeholder="Size">
             <input type="text" class="stock-qty-input" value="${item.qty}" placeholder="Qty">
             <button class="btn-delete">×</button>
         `;
@@ -213,7 +213,7 @@ function renderAllInputRows() {
     state.required.forEach((item, index) => {
         const row = document.createElement('div'); row.className = 'input-row';
         row.innerHTML = `
-            <input type="text" class="req-len-input" value="${formatFromInches(item.length, u)}" placeholder="Size">
+            <input type="text" class="req-len-input" value="${formatFromInches(item.length, u).replace(/"/g, '&quot;')}" placeholder="Size">
             <input type="number" class="req-qty-input" value="${item.qty}" placeholder="Qty">
             <button class="btn-delete">×</button>
         `;
