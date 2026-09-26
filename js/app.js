@@ -253,11 +253,6 @@ function setupTransformHandlers() {
     viewport.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX - posX; startY = e.clientY - posY; });
     window.addEventListener('mousemove', (e) => { if (isDragging) { posX = e.clientX - startX; posY = e.clientY - startY; updateTransform(); } });
     window.addEventListener('mouseup', () => isDragging = false);
-
-    let touchStartX, touchStartY;
-    viewport.addEventListener('touchstart', (e) => { if(e.touches.length === 1) { isDragging = true; touchStartX = e.touches[0].clientX - posX; touchStartY = e.touches[0].clientY - posY; } });
-    viewport.addEventListener('touchmove', (e) => { if(isDragging && e.touches.length === 1) { posX = e.touches[0].clientX - touchStartX; posY = e.touches[0].clientY - touchStartY; updateTransform(); } });
-    viewport.addEventListener('touchend', () => isDragging = false);
 }
 
 // --- OPTIMIZATION EXECUTION ENGINE ---
